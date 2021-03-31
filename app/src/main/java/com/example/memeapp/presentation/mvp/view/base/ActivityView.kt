@@ -1,4 +1,4 @@
-package com.example.memeapp.presentation.mvp.view
+package com.example.memeapp.presentation.mvp.view.base
 
 import android.app.Activity
 import android.content.Context

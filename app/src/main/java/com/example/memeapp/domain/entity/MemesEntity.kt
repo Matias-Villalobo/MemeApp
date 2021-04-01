@@ -1,6 +1,5 @@
 package com.example.memeapp.domain.entity
 
-
 class MemesEntity(
     val id: Int,
     val bottomText: String,

@@ -1,4 +1,4 @@
-package com.example.memeapp.data.service.mapper
+package com.example.memeapp.data.mapper
 
 import com.example.memeapp.data.service.response.MemesResponse
 import com.example.memeapp.domain.entity.MemesEntity

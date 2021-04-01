@@ -1,12 +1,28 @@
 package com.example.memeapp.presentation.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.memeapp.R
+import androidx.appcompat.app.AppCompatActivity
+import com.example.memeapp.data.service.implementation.MemesServiceImpl
+import com.example.memeapp.databinding.ActivityMainBinding
+import com.example.memeapp.domain.usecase.GetMemesUseCaseImpl
+import com.example.memeapp.presentation.mvp.contract.MemeAppContract
+import com.example.memeapp.presentation.mvp.model.MemeAppModel
+import com.example.memeapp.presentation.mvp.presenter.MemeAppPresenter
+import com.example.memeapp.presentation.mvp.view.MemeAppView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var presenter: MemeAppContract.MemeAppPresenter
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        presenter = MemeAppPresenter(
+            MemeAppModel(GetMemesUseCaseImpl(MemesServiceImpl())),
+            MemeAppView(this, binding)
+        )
+        presenter.fetchMemes()
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="progress_bar_height">100dp</dimen>
+    <dimen name="tex_margin">16dp</dimen>
+    <dimen name="tex_size">20sp</dimen>
+    <dimen name="image_height">200dp</dimen>
+</resources>

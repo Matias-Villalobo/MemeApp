@@ -26,8 +26,7 @@
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="@id/image"
             app:layout_constraintLeft_toLeftOf="@id/image"
-            app:layout_constraintRight_toRightOf="@id/image"
-            />
+            app:layout_constraintRight_toRightOf="@id/image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -35,5 +35,4 @@ class MemesAdapter(private val meme: List<MemesEntity>) :
             }
         }
     }
-
 }

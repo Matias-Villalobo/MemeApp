@@ -34,8 +34,8 @@ class MemeAppPresenterTest {
     fun `connection unsuccessful test`() {
         whenever(memeAppModel.getMemesData()).thenReturn(Observable.error(Throwable()))
         memeAppPresenter.fetchMemes()
-        verify(view).showProgressBar()
-        verify(view).hideProgressBar()
+        verify(view).showProgressBar(true)
+        verify(view).showProgressBar(false)
         verify(view).showError()
     }
 
@@ -43,10 +43,10 @@ class MemeAppPresenterTest {
     fun `connection successful test`() {
         whenever(memeAppModel.getMemesData()).thenReturn(Observable.just(memes))
         memeAppPresenter.fetchMemes()
-        verify(view).showProgressBar()
+        verify(view).showProgressBar(true)
         verify(memeAppModel).getMemesData()
         verify(view).showData(memes)
-        verify(view).hideProgressBar()
+        verify(view).showProgressBar(false)
     }
 
     companion object {

@@ -21,8 +21,8 @@ class GetMemesUseCaseTest {
 
     @Test
     fun `get memes Test`() {
-        getMemesUseCaseImpl.getAllMemes()
         whenever(memesService.getMemes()).thenReturn(Observable.just(memes))
+        getMemesUseCaseImpl.getAllMemes()
         verify(memesService).getMemes()
     }
 }

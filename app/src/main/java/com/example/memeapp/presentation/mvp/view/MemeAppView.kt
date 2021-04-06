@@ -3,6 +3,7 @@ package com.example.memeapp.presentation.mvp.view
 import android.app.Activity
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memeapp.R
 import com.example.memeapp.databinding.ActivityMainBinding
@@ -23,11 +24,8 @@ class MemeAppView(activity: Activity, private val binding: ActivityMainBinding) 
         Toast.makeText(context, R.string.connection_not_established, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showProgressBar() {
-        binding.progressBar.visibility = View.VISIBLE
+    override fun showProgressBar(show: Boolean) {
+        binding.progressBar.isVisible = show
     }
 
-    override fun hideProgressBar() {
-        binding.progressBar.visibility = View.GONE
-    }
 }

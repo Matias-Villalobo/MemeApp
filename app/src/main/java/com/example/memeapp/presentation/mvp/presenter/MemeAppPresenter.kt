@@ -10,18 +10,18 @@ class MemeAppPresenter(
 ) : MemeAppContract.MemeAppPresenter {
 
     override fun fetchMemes() {
-        view.showProgressBar()
+        view.showProgressBar(true)
         model.getMemesData()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { data ->
                     view.showData(data)
-                    view.hideProgressBar()
+                    view.showProgressBar(false)
                 },
                 {
                     view.showError()
-                    view.hideProgressBar()
+                    view.showProgressBar(false)
                 })
     }
 }

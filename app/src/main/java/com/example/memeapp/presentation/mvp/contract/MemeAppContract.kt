@@ -16,5 +16,6 @@ interface MemeAppContract {
     interface MemeAppView {
         fun showData(data: List<MemesEntity>)
         fun showError()
+        fun showProgressBar(show: Boolean)
     }
 }

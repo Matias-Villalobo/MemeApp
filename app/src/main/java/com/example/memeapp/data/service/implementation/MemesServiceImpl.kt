@@ -2,7 +2,7 @@ package com.example.memeapp.data.service.implementation
 
 import com.example.memeapp.data.request.generator.MemeRequestGenerator
 import com.example.memeapp.data.service.api.MemeApi
-import com.example.memeapp.data.service.mapper.MemesMapper.transformListOfMemes
+import com.example.memeapp.data.mapper.MemesMapper.transformListOfMemes
 import com.example.memeapp.domain.entity.MemesEntity
 import com.example.memeapp.domain.service.MemesService
 import io.reactivex.rxjava3.core.Observable

@@ -1,6 +1,6 @@
 package com.example.memeapp.domain.entity
 
-class MemesEntity(
+data class MemesEntity(
     val id: Int,
     val bottomText: String,
     val image: String,

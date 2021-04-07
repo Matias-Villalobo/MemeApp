@@ -13,7 +13,7 @@ import com.example.memeapp.presentation.mvp.model.MemeDetailModel
 import com.example.memeapp.presentation.mvp.presenter.MemeDetailPresenter
 import com.example.memeapp.presentation.mvp.view.MemeDetailView
 
-class MemeFragmentDetail : DialogFragment () {
+class MemeFragmentDetail : DialogFragment() {
     private lateinit var presenter: FragmentDetailContract.Presenter
     private lateinit var binding: MemeCardDetailLayoutBinding
 
@@ -30,9 +30,8 @@ class MemeFragmentDetail : DialogFragment () {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = MemeDetailPresenter(
-            MemeDetailModel(
-                GetSingleMemeUseCaseImpl(MemesServiceImpl())
-            ), MemeDetailView(this, binding)
+                    MemeDetailModel(GetSingleMemeUseCaseImpl(MemesServiceImpl())),
+                    MemeDetailView(this, binding)
         )
         presenter.retrieveSingleMemeInfo(
             arguments?.getInt(MEME_ID) ?: ZERO_INT

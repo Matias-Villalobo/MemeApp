@@ -34,7 +34,7 @@ class MemeDetailView(
     }
 
     override fun showProgressBar(show: Boolean) {
-        binding.progressBar.isInvisible = !show
+        binding.progressBar.isInvisible = show.not()
         binding.memeRankTitle.isInvisible = show
         binding.memeButtonTextTitle.isInvisible = show
         binding.memeTopTextTitle.isInvisible = show

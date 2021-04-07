@@ -10,18 +10,18 @@ class MemeDetailPresenter(
 ) : FragmentDetailContract.Presenter {
 
     override fun retrieveSingleMemeInfo(memeId: Int) {
-        view.showProgressBar()
+        view.showProgressBar(true)
         model.getDataSingleMeme(memeId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { data ->
                     view.showFragmentData(data)
-                    view.hideProgressBar()
+                    view.showProgressBar(false)
                 },
                 {
                     view.showFragmentError()
-                    view.hideProgressBar()
+                    view.showProgressBar(false)
                 })
     }
 }

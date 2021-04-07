@@ -11,8 +11,8 @@ interface FragmentDetailContract {
     interface View {
         fun showFragmentData(data: MemesEntity)
         fun showFragmentError()
-        fun showProgressBar()
-        fun hideProgressBar()
+        fun showProgressBar(show: Boolean)
+
     }
 
     interface Presenter {

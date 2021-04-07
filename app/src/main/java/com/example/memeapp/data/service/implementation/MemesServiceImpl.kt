@@ -45,7 +45,5 @@ class MemesServiceImpl : MemesService {
 
     companion object {
         private const val CHOSEN_PAGE = 1
-        private const val ERROR_MESSAGE_EMPTY_RESPONSE =
-            "We can not get an answer because of an empty response"
     }
 }

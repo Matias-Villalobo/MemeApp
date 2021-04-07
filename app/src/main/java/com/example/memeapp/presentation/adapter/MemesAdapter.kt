@@ -9,6 +9,10 @@ import com.example.memeapp.R
 import com.example.memeapp.databinding.MemeCardLayoutBinding
 import com.example.memeapp.domain.entity.MemesEntity
 
+interface ItemClicked {
+    fun memeCardClicked(memeId: Int)
+}
+
 class MemesAdapter(
     private val meme: List<MemesEntity>,
     private val itemClicked: ItemClicked

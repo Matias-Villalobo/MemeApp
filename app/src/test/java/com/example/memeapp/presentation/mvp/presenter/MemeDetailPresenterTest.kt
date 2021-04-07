@@ -35,20 +35,18 @@ class MemeDetailPresenterTest {
     fun `when an item is pressed, retrieve info`() {
         whenever(model.getDataSingleMeme(ID)).thenReturn(Observable.just(characters))
         presenter.retrieveSingleMemeInfo(ID)
-        verify(view).showProgressBar()
+        verify(view).showProgressBar(true)
         verify(model).getDataSingleMeme(ID)
         verify(view).showFragmentData(characters)
-        verify(view).hideProgressBar()
     }
 
     @Test
     fun `when an item is pressed, do not retrieve info`() {
         whenever(model.getDataSingleMeme(ID)).thenReturn(Observable.error(Throwable()))
         presenter.retrieveSingleMemeInfo(ID)
-        verify(view).showProgressBar()
+        verify(view).showProgressBar(true)
         verify(model).getDataSingleMeme(ID)
         verify(view).showFragmentError()
-        verify(view).hideProgressBar()
     }
 
     companion object {

@@ -13,17 +13,17 @@ import org.junit.Test
 class GetSingleMemeUseCaseTest {
     private var memesService: MemesService = mock()
     private var meme: MemesEntity = mock()
-    private lateinit var getSingleMemeUseCaseImpl : GetSingleMemeUseCaseImpl
+    private lateinit var getSingleMemeUseCaseImpl: GetSingleMemeUseCaseImpl
 
     @Before
     fun setUp() {
-        getSingleMemeUseCaseImpl= GetSingleMemeUseCaseImpl(memesService)
+        getSingleMemeUseCaseImpl = GetSingleMemeUseCaseImpl(memesService)
     }
 
     @Test
     fun call() {
-        getSingleMemeUseCaseImpl.call(ID)
         whenever(memesService.getSingleMeme(ID)).thenReturn(Observable.just(meme))
+        getSingleMemeUseCaseImpl.call(ID)
         verify(memesService).getSingleMeme(ID)
     }
 }

@@ -33,21 +33,13 @@ class MemeDetailView(
         Toast.makeText(context, R.string.connection_not_established, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showProgressBar() {
-        binding.progressBar.isInvisible = false
-        binding.memeRankTitle.isInvisible = true
-        binding.memeButtonTextTitle.isInvisible = true
-        binding.memeTopTextTitle.isInvisible = true
-        binding.memeTagsTitle.isInvisible = true
-        binding.memeRankTitle.isInvisible = true
+    override fun showProgressBar(show: Boolean) {
+        binding.progressBar.isInvisible = !show
+        binding.memeRankTitle.isInvisible = show
+        binding.memeButtonTextTitle.isInvisible = show
+        binding.memeTopTextTitle.isInvisible = show
+        binding.memeTagsTitle.isInvisible = show
+        binding.memeRankTitle.isInvisible = show
     }
 
-    override fun hideProgressBar() {
-        binding.progressBar.isInvisible = true
-        binding.memeRankTitle.isInvisible = false
-        binding.memeButtonTextTitle.isInvisible = false
-        binding.memeTopTextTitle.isInvisible = false
-        binding.memeTagsTitle.isInvisible = false
-        binding.memeRankTitle.isInvisible = false
-    }
 }

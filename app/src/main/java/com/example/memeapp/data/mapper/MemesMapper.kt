@@ -1,11 +1,11 @@
 package com.example.memeapp.data.mapper
 
-import com.example.memeapp.data.service.response.MemesResponse
+import com.example.memeapp.data.service.response.MemeResponse
 import com.example.memeapp.data.utils.ConstUtils.EMPTY_STRING
 import com.example.memeapp.domain.entity.MemesEntity
 
 object MemesMapper {
-    fun transformMemes(memesResponse: MemesResponse): MemesEntity =
+    fun transformMemes(memesResponse: MemeResponse): MemesEntity =
         MemesEntity(
             memesResponse.id,
             memesResponse.bottomText ?: EMPTY_STRING,
@@ -16,6 +16,6 @@ object MemesMapper {
             memesResponse.topText ?: EMPTY_STRING
         )
 
-    fun transformListOfMemes(memesResponse: List<MemesResponse>): List<MemesEntity> =
+    fun transformListOfMemes(memesResponse: List<MemeResponse>): List<MemesEntity> =
         memesResponse.map { transformMemes(it) }
 }

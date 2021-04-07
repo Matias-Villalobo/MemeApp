@@ -3,7 +3,7 @@ package com.example.memeapp.data.service.response
 import com.example.memeapp.data.utils.ConstUtils.EMPTY_STRING
 import com.google.gson.annotations.SerializedName
 
-class MemesResponse(
+class MemeResponse(
     @SerializedName("ID") val id: Int,
     @SerializedName("bottomText") val bottomText: String? = EMPTY_STRING,
     @SerializedName("image") val image: String,

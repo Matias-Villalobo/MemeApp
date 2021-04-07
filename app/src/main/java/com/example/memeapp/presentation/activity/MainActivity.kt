@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.memeapp.data.service.implementation.MemesServiceImpl
 import com.example.memeapp.databinding.ActivityMainBinding
 import com.example.memeapp.domain.usecase.GetMemesUseCaseImpl
+import com.example.memeapp.presentation.adapter.ItemClicked
 import com.example.memeapp.presentation.mvp.contract.MemeAppContract
 import com.example.memeapp.presentation.mvp.model.MemeAppModel
 import com.example.memeapp.presentation.mvp.presenter.MemeAppPresenter
 import com.example.memeapp.presentation.mvp.view.MemeAppView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ItemClicked {
 
     private lateinit var presenter: MemeAppContract.MemeAppPresenter
     private lateinit var binding: ActivityMainBinding
@@ -24,5 +25,9 @@ class MainActivity : AppCompatActivity() {
             MemeAppView(this, binding)
         )
         presenter.fetchMemes()
+    }
+
+    override fun memeCardClicked(memeId: Int) {
+        presenter.onMemeClicked(memeId)
     }
 }

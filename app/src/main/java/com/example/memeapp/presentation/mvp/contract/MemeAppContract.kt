@@ -11,11 +11,13 @@ interface MemeAppContract {
 
     interface MemeAppPresenter {
         fun fetchMemes()
+        fun onMemeClicked(memeId: Int)
     }
 
     interface MemeAppView {
         fun showData(data: List<MemesEntity>)
         fun showError()
         fun showProgressBar(show: Boolean)
+        fun showMemeInfo(memeId: Int)
     }
 }

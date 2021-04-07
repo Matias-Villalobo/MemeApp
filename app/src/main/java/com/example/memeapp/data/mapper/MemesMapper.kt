@@ -5,13 +5,13 @@ import com.example.memeapp.data.utils.ConstUtils.EMPTY_STRING
 import com.example.memeapp.domain.entity.MemesEntity
 
 object MemesMapper {
-    private fun transformMemes(memesResponse: MemesResponse): MemesEntity =
+    fun transformMemes(memesResponse: MemesResponse): MemesEntity =
         MemesEntity(
             memesResponse.id,
             memesResponse.bottomText ?: EMPTY_STRING,
             memesResponse.image,
             memesResponse.name,
-            memesResponse.tag,
+            memesResponse.tag ?: EMPTY_STRING,
             memesResponse.rank,
             memesResponse.topText ?: EMPTY_STRING
         )

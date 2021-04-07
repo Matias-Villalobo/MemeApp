@@ -9,4 +9,7 @@ import retrofit2.http.Path
 interface MemeApi {
     @GET("{page}")
     fun getMemes(@Path("page") page: Int): Call<MemesBaseResponse<List<MemesResponse>>>
+
+    @GET("/memes/{id}")
+    fun getSingleMeme(@Path("id") id: Int): Call<MemesBaseResponse<MemesResponse>> //corregir nombre en memesresponse
 }

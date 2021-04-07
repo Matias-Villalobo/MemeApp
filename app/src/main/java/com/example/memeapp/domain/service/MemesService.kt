@@ -5,4 +5,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface MemesService {
     fun getMemes(): Observable<List<MemesEntity>>
+    fun getSingleMeme(id: Int): Observable<MemesEntity>
 }

@@ -5,7 +5,7 @@ data class MemesEntity(
     val bottomText: String,
     val image: String,
     val name: String,
-    val tag: Int,
-    val rank: String,
+    val tag: String,
+    val rank: Int,
     val topText: String
 )

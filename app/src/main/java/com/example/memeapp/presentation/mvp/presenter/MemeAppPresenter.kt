@@ -24,4 +24,8 @@ class MemeAppPresenter(
                     view.showProgressBar(false)
                 })
     }
+
+    override fun onMemeClicked(memeId: Int) {
+        view.showMemeInfo(memeId)
+    }
 }

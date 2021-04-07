@@ -11,10 +11,11 @@ object CharactersConstantsUtils {
     const val BOTTOM_TEXT = "Description"
     const val IMAGE = "Image"
     const val NAME = "MemeName"
-    const val TAG = 3
-    const val RANK = "3"
+    const val RANK = 3
+    const val TAG = "3"
     const val TOP_TEXT = "Another description"
     val MEMES_RESPONSE = MemesResponse(ID, BOTTOM_TEXT, IMAGE, NAME, TAG, RANK, TOP_TEXT)
     val MEMES_ENTITY = MemesEntity(ID, BOTTOM_TEXT, IMAGE, NAME, TAG, RANK, TOP_TEXT)
+
 
 }

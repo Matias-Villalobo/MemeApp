@@ -1,7 +1,9 @@
 package com.example.memeapp.presentation.mvp.presenter
 
+
 import com.example.memeapp.domain.entity.MemesEntity
-import com.example.memeapp.presentation.mvp.contract.MemeAppContract
+import com.example.memeapp.presentation.mvp.model.MemeDetailModel
+import com.example.memeapp.presentation.mvp.view.MemeDetailView
 import com.example.memeapp.utils.CharactersConstantsUtils.ID
 import com.example.memeapp.utils.CharactersConstantsUtils.ZERO_VALUE
 import com.nhaarman.mockitokotlin2.mock
@@ -15,44 +17,36 @@ import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test
-import org.mockito.Mockito.mock
 import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
 
-
-class MemeAppPresenterTest {
-    private val memeAppModel = mock(MemeAppContract.MemeAppModel::class.java)
-    private val view = mock(MemeAppContract.MemeAppView::class.java)
-    private lateinit var memeAppPresenter: MemeAppContract.MemeAppPresenter
-    private var memes: List<MemesEntity> = mock()
+class MemeDetailPresenterTest {
+    private val view: MemeDetailView = mock()
+    private val model: MemeDetailModel = mock()
+    private lateinit var presenter: MemeDetailPresenter
+    private var characters: MemesEntity = mock()
 
     @Before
     fun setUp() {
-        memeAppPresenter = MemeAppPresenter(memeAppModel, view)
+        presenter = MemeDetailPresenter(model, view)
     }
 
     @Test
-    fun `connection unsuccessful test`() {
-        whenever(memeAppModel.getMemesData()).thenReturn(Observable.error(Throwable()))
-        memeAppPresenter.fetchMemes()
+    fun `when an item is pressed, retrieve info`() {
+        whenever(model.getDataSingleMeme(ID)).thenReturn(Observable.just(characters))
+        presenter.retrieveSingleMemeInfo(ID)
         verify(view).showProgressBar(true)
-        verify(view).showProgressBar(false)
-        verify(view).showError()
+        verify(model).getDataSingleMeme(ID)
+        verify(view).showFragmentData(characters)
     }
 
     @Test
-    fun `connection successful test`() {
-        whenever(memeAppModel.getMemesData()).thenReturn(Observable.just(memes))
-        memeAppPresenter.fetchMemes()
+    fun `when an item is pressed, do not retrieve info`() {
+        whenever(model.getDataSingleMeme(ID)).thenReturn(Observable.error(Throwable()))
+        presenter.retrieveSingleMemeInfo(ID)
         verify(view).showProgressBar(true)
-        verify(memeAppModel).getMemesData()
-        verify(view).showData(memes)
-        verify(view).showProgressBar(false)
-    }
-    @Test
-    fun `when a meme card is pressed, show details in a fragment`() {
-        memeAppPresenter.onMemeClicked(ID)
-        verify(view).showMemeInfo(ID)
+        verify(model).getDataSingleMeme(ID)
+        verify(view).showFragmentError()
     }
 
     companion object {
@@ -79,5 +73,4 @@ class MemeAppPresenterTest {
             io.reactivex.rxjava3.android.plugins.RxAndroidPlugins.setInitMainThreadSchedulerHandler { immediate }
         }
     }
-
 }

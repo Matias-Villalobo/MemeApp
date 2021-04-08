@@ -1,5 +1,6 @@
 package com.example.memeapp.data.service.implementation
 
+import com.example.memeapp.data.mapper.MemesMapper
 import com.example.memeapp.data.request.generator.MemeRequestGenerator
 import com.example.memeapp.data.service.api.MemeApi
 import com.example.memeapp.data.mapper.MemesMapper.transformListOfMemes
@@ -19,6 +20,23 @@ class MemesServiceImpl : MemesService {
             if (response.isSuccessful) {
                 subscriber.onNext(response.body()?.data?.let { transformListOfMemes(it) })
                 subscriber.onComplete()
+            } else {
+                subscriber.onError(Throwable(response.message()))
+            }
+        }
+    }
+
+    override fun getSingleMeme(id: Int): Observable<MemesEntity> {
+        return Observable.create { subscriber ->
+            val callResponse = api.createService(MemeApi::class.java).getSingleMeme(id)
+            val response = callResponse.execute()
+
+            if (response.isSuccessful) {
+                val validResponse = response.body()?.data
+                validResponse?.let {
+                    subscriber.onNext(MemesMapper.transformMemes(it))
+                    subscriber.onComplete()
+                }
             } else {
                 subscriber.onError(Throwable(response.message()))
             }

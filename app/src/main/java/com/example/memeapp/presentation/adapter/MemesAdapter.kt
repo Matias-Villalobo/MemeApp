@@ -9,7 +9,14 @@ import com.example.memeapp.R
 import com.example.memeapp.databinding.MemeCardLayoutBinding
 import com.example.memeapp.domain.entity.MemesEntity
 
-class MemesAdapter(private val meme: List<MemesEntity>) :
+interface ItemClicked {
+    fun memeCardClicked(memeId: Int)
+}
+
+class MemesAdapter(
+    private val meme: List<MemesEntity>,
+    private val itemClicked: ItemClicked
+) :
     RecyclerView.Adapter<MemesAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -18,7 +25,8 @@ class MemesAdapter(private val meme: List<MemesEntity>) :
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(meme[position])
+        val item = meme[position]
+        holder.bind(item, itemClicked)
     }
 
     override fun getItemCount() = meme.size
@@ -26,12 +34,17 @@ class MemesAdapter(private val meme: List<MemesEntity>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = MemeCardLayoutBinding.bind(itemView)
 
-        fun bind(memeItem: MemesEntity) {
+        fun bind(memeItem: MemesEntity, itemClicked: ItemClicked) {
             binding.apply {
                 memeName.text = memeItem.name
                 Glide.with(itemView.context)
                     .load(memeItem.image)
+                    .placeholder(R.drawable.ic_launcher_background)
                     .into(image)
+
+                memeCard.setOnClickListener {
+                    itemClicked.memeCardClicked(memeItem.id)
+                }
             }
         }
     }

@@ -1,31 +1,27 @@
 package com.example.memeapp.presentation.mvp.presenter
 
-import com.example.memeapp.presentation.mvp.contract.MemeAppContract
+import com.example.memeapp.presentation.mvp.contract.FragmentDetailContract
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MemeAppPresenter(
-    private val model: MemeAppContract.MemeAppModel,
-    private val view: MemeAppContract.MemeAppView
-) : MemeAppContract.MemeAppPresenter {
+class MemeDetailPresenter(
+    private val model: FragmentDetailContract.Model,
+    private val view: FragmentDetailContract.View
+) : FragmentDetailContract.Presenter {
 
-    override fun fetchMemes() {
+    override fun retrieveSingleMemeInfo(memeId: Int) {
         view.showProgressBar(true)
-        model.getMemesData()
+        model.getDataSingleMeme(memeId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { data ->
-                    view.showData(data)
+                    view.showFragmentData(data)
                     view.showProgressBar(false)
                 },
                 {
-                    view.showError()
+                    view.showFragmentError()
                     view.showProgressBar(false)
                 })
-    }
-
-    override fun onMemeClicked(memeId: Int) {
-        view.showMemeInfo(memeId)
     }
 }

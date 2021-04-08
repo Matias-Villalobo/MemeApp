@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">MemeApp</string>
-    <string name="connection_established">"The connection with the server has been established"</string>
-    <string name="connection_not_established">"Can not connect with the server"</string>
+    <string name="connection_established">The connection with the server has been established</string>
+    <string name="connection_not_established">There is no connection</string>
+    <string name="title">Title</string>
+    <string name="ranking">Ranking</string>
+    <string name="tags">Tags</string>
+    <string name="other_names">Other Names</string>
 </resources>

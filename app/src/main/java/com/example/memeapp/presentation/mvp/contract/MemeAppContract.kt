@@ -7,6 +7,7 @@ interface MemeAppContract {
 
     interface MemeAppModel {
         fun getMemesData(): Observable<List<MemesEntity>>
+        fun addMemesListToDataBase(memes: List<MemesEntity>)
     }
 
     interface MemeAppPresenter {

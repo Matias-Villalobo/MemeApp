@@ -16,6 +16,7 @@ class MemeAppPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { data ->
+                    model.addMemesListToDataBase(data)
                     view.showData(data)
                     view.showProgressBar(false)
                 },

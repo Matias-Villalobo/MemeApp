@@ -49,6 +49,7 @@ class MemeAppPresenterTest {
         verify(view).showData(memes)
         verify(view).showProgressBar(false)
     }
+
     @Test
     fun `when a meme card is pressed, show details in a fragment`() {
         memeAppPresenter.onMemeClicked(ID)

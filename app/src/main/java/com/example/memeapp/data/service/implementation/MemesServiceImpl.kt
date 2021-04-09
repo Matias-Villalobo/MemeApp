@@ -1,9 +1,9 @@
 package com.example.memeapp.data.service.implementation
 
-import com.example.memeapp.data.mapper.MemesMapper
+import com.example.memeapp.data.mapper.transformListOfMemes
+import com.example.memeapp.data.mapper.transformMemes
 import com.example.memeapp.data.request.generator.MemeRequestGenerator
 import com.example.memeapp.data.service.api.MemeApi
-import com.example.memeapp.data.mapper.MemesMapper.transformListOfMemes
 import com.example.memeapp.domain.entity.MemesEntity
 import com.example.memeapp.domain.service.MemesService
 import io.reactivex.rxjava3.core.Observable
@@ -18,7 +18,7 @@ class MemesServiceImpl : MemesService {
             val response = callResponse.execute()
 
             if (response.isSuccessful) {
-                subscriber.onNext(response.body()?.data?.let { transformListOfMemes(it) })
+                subscriber.onNext(response.body()?.data?.transformListOfMemes())
                 subscriber.onComplete()
             } else {
                 subscriber.onError(Throwable(response.message()))
@@ -33,8 +33,8 @@ class MemesServiceImpl : MemesService {
 
             if (response.isSuccessful) {
                 val validResponse = response.body()?.data
-                validResponse?.let {
-                    subscriber.onNext(MemesMapper.transformMemes(it))
+                validResponse?.let { memeResponse ->
+                    subscriber.onNext(memeResponse.transformMemes())
                     subscriber.onComplete()
                 }
             } else {

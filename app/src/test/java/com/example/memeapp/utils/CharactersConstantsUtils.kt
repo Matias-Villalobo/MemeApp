@@ -16,6 +16,6 @@ object CharactersConstantsUtils {
     const val TOP_TEXT = "Another description"
     val MEMES_RESPONSE = MemeResponse(ID, BOTTOM_TEXT, IMAGE, NAME, TAG, RANK, TOP_TEXT)
     val MEMES_ENTITY = MemesEntity(ID, BOTTOM_TEXT, IMAGE, NAME, TAG, RANK, TOP_TEXT)
-
-
+    val MEMES_NULL_RESPONSE = MemeResponse(ID, null, IMAGE, NAME, null, RANK, null)
+    val MEMES_NULL_ENTITY = MemesEntity(ID, EMPTY_VALUE, IMAGE, NAME, EMPTY_VALUE, RANK, EMPTY_VALUE)
 }

@@ -4,17 +4,18 @@ import com.example.memeapp.data.local.model.MemeRealmEntity
 import com.example.memeapp.domain.entity.MemesEntity
 
 object MemeRealmMapper {
-    fun transformEntityToRealm(memesEntity: MemesEntity): MemeRealmEntity =
-        MemeRealmEntity(
-            memesEntity.id,
-            memesEntity.bottomText,
-            memesEntity.image,
-            memesEntity.name,
-            memesEntity.tag,
-            memesEntity.rank,
-            memesEntity.topText
-        )
 
-    fun transformRealmListOfMemes(memesRealmList: List<MemesEntity>): List<MemeRealmEntity> =
-        memesRealmList.map { transformEntityToRealm(it) }
+    fun List<MemesEntity>.transformRealmListOfMemes(): List<MemeRealmEntity> =
+        this.map { it.transformEntityToRealm() }
+
+    fun MemesEntity.transformEntityToRealm(): MemeRealmEntity =
+        MemeRealmEntity(
+            this.id,
+            this.bottomText,
+            this.image,
+            this.name,
+            this.tag,
+            this.rank,
+            this.topText
+        )
 }

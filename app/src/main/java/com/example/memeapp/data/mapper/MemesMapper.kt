@@ -5,17 +5,17 @@ import com.example.memeapp.data.utils.ConstUtils.EMPTY_STRING
 import com.example.memeapp.domain.entity.MemesEntity
 
 object MemesMapper {
-    fun transformMemes(memesResponse: MemeResponse): MemesEntity =
+    fun MemeResponse.transformMemes(): MemesEntity =
         MemesEntity(
-            memesResponse.id,
-            memesResponse.bottomText ?: EMPTY_STRING,
-            memesResponse.image,
-            memesResponse.name,
-            memesResponse.tag ?: EMPTY_STRING,
-            memesResponse.rank,
-            memesResponse.topText ?: EMPTY_STRING
+            this.id,
+            this.bottomText ?: EMPTY_STRING,
+            this.image,
+            this.name,
+            this.tag ?: EMPTY_STRING,
+            this.rank,
+            this.topText ?: EMPTY_STRING
         )
 
-    fun transformListOfMemes(memesResponse: List<MemeResponse>): List<MemesEntity> =
-        memesResponse.map { transformMemes(it) }
+    fun List<MemeResponse>.transformListOfMemes(): List<MemesEntity> =
+        this.map { it.transformMemes() }
 }

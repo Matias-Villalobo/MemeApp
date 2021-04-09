@@ -1,5 +1,9 @@
 package com.example.memeapp.data.mapper
 
+import com.example.memeapp.data.local.model.MemeRealmEntity
+import com.example.memeapp.data.mapper.MemeRealmMapper.transformEntityToRealm
+import com.example.memeapp.data.mapper.MemeRealmMapper.transformRealmListOfMemes
+import com.example.memeapp.domain.entity.MemesEntity
 import com.example.memeapp.utils.CharactersConstantsUtils
 import com.example.memeapp.utils.CharactersConstantsUtils.BOTTOM_TEXT
 import com.example.memeapp.utils.CharactersConstantsUtils.ID
@@ -17,7 +21,7 @@ class MemeRealmMapperTest {
 
     @Test
     fun `transform memes entity to realm Test`() {
-        val meme = MemeRealmMapper.transformEntityToRealm(MEMES_ENTITY)
+        val meme = MEMES_ENTITY.transformEntityToRealm()
         assertEquals(ID, meme.id)
         assertEquals(NAME, meme.name)
         assertEquals(BOTTOM_TEXT, meme.bottomText)
@@ -29,7 +33,7 @@ class MemeRealmMapperTest {
 
     @Test
     fun `transform list of memes entity to realm list Test`() {
-        assertEquals(ZERO_VALUE, MemeRealmMapper.transformRealmListOfMemes(emptyList()).size)
+        assertEquals(ZERO_VALUE, emptyList<MemesEntity>().transformRealmListOfMemes().size)
     }
 
 }

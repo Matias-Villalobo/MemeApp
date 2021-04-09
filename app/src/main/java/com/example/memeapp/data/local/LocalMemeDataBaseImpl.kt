@@ -14,8 +14,7 @@ class LocalMemeDataBaseImpl(private val mapper: MemeRealmMapper) : LocalMemeData
 
         realmInstance.executeTransaction {
             realmInstance.deleteAll()
-            var userRealm: List<MemeRealmEntity> = memes.transformRealmListOfMemes()
-            realmInstance.insert(userRealm)
+            realmInstance.insert(memes.transformRealmListOfMemes())
         }
     }
 }

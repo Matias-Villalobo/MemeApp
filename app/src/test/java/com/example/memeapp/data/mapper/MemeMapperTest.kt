@@ -1,8 +1,5 @@
 package com.example.memeapp.data.mapper
 
-import com.example.memeapp.data.mapper.MemeRealmMapper.transformRealmListOfMemes
-import com.example.memeapp.data.mapper.MemesMapper.transformListOfMemes
-import com.example.memeapp.data.mapper.MemesMapper.transformMemes
 import com.example.memeapp.data.service.response.MemeResponse
 import com.example.memeapp.domain.entity.MemesEntity
 import com.example.memeapp.utils.CharactersConstantsUtils.MEMES_ENTITY

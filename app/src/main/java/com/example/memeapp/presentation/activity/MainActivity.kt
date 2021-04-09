@@ -3,7 +3,6 @@ package com.example.memeapp.presentation.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.memeapp.data.local.LocalMemeDataBaseImpl
-import com.example.memeapp.data.mapper.MemeRealmMapper
 import com.example.memeapp.data.service.implementation.MemesServiceImpl
 import com.example.memeapp.databinding.ActivityMainBinding
 import com.example.memeapp.domain.usecase.GetMemesUseCaseImpl
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity(), ItemClicked {
             MemeAppModel
                 (
                 GetMemesUseCaseImpl(MemesServiceImpl()),
-                SaveMemesToDataBaseUseCaseImpl(LocalMemeDataBaseImpl(MemeRealmMapper))
+                SaveMemesToDataBaseUseCaseImpl(LocalMemeDataBaseImpl())
             ),
             MemeAppView(this, binding)
         )

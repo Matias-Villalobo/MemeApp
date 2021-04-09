@@ -1,10 +1,6 @@
 package com.example.memeapp.data.mapper
 
-import com.example.memeapp.data.local.model.MemeRealmEntity
-import com.example.memeapp.data.mapper.MemeRealmMapper.transformEntityToRealm
-import com.example.memeapp.data.mapper.MemeRealmMapper.transformRealmListOfMemes
 import com.example.memeapp.domain.entity.MemesEntity
-import com.example.memeapp.utils.CharactersConstantsUtils
 import com.example.memeapp.utils.CharactersConstantsUtils.BOTTOM_TEXT
 import com.example.memeapp.utils.CharactersConstantsUtils.ID
 import com.example.memeapp.utils.CharactersConstantsUtils.IMAGE

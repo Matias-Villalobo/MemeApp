@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), ItemClicked {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        loadMemesFromLocalDB()
+        setListeners()
         presenter = MemeAppPresenter(
             MemeAppModel
                 (
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), ItemClicked {
         presenter.onMemeClicked(memeId)
     }
 
-    private fun loadMemesFromLocalDB() {
+    private fun setListeners() {
         binding.fab.setOnClickListener { presenter.getMemesFromDataBase() }
     }
 }

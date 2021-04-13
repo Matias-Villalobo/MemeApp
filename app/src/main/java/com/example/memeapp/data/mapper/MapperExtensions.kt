@@ -33,7 +33,6 @@ fun MemeRealmEntity.transformRealmToEntity(): MemesEntity =
         this.topText
     )
 
-
 fun MemeResponse.transformMemes(): MemesEntity =
     MemesEntity(
         this.id,

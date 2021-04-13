@@ -33,9 +33,7 @@ class MemeAppPresenter(
     override fun getMemesFromDataBase() {
         view.cleanRecycler()
         view.showProgressBar(true)
-        model.loadMemesFromDataBase().apply {
-            view.showData(this)
-            view.showProgressBar(false)
-        }
+        view.showData(model.loadMemesFromDataBase())
+        view.showProgressBar(false)
     }
 }

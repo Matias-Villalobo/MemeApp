@@ -17,7 +17,7 @@
         <item name="android:shadowRadius">2.0</item>
     </style>
 
-    <style name="Title">
+    <style name="TitleStyle">
         <item name="android:textSize">@dimen/title_text_size</item>
         <item name="android:textColor">@color/teal_200</item>
         <item name="android:layout_gravity">center</item>
@@ -26,20 +26,20 @@
         <item name="android:layout_marginRight">@dimen/title_margin_size</item>
     </style>
 
-    <style name="Letters">
+    <style name="TitleLettersStyle">
         <item name="android:fontFamily">sans-serif-bold</item>
         <item name="android:textSize">@dimen/bullet_text_size</item>
         <item name="android:layout_margin">@dimen/title_margin_minor_size</item>
     </style>
 
-    <style name="FloatingButtons">
+    <style name="FloatingButtonStyle">
         <item name="backgroundTint">@color/grey</item>
         <item name="android:layout_marginBottom">@dimen/fab_margin_bottom</item>
         <item name="android:layout_marginRight">@dimen/fab_margin_right</item>
         <item name="fabCustomSize">@dimen/fab_circumference_size</item>
     </style>
 
-    <style name="Body">
+    <style name="TextDescription">
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/body_text_size</item>
         <item name="android:textColor">@color/teal_700</item>

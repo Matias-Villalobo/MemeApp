@@ -1,6 +1,5 @@
 package com.example.memeapp.data.local
 
-
 import com.example.memeapp.data.local.model.MemeRealmEntity
 import com.example.memeapp.data.mapper.transformRealmListOfMemes
 import com.example.memeapp.data.mapper.transformRealmListToEntityList

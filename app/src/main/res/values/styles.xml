@@ -32,6 +32,13 @@
         <item name="android:layout_margin">@dimen/title_margin_minor_size</item>
     </style>
 
+    <style name="FloatingButtons">
+        <item name="backgroundTint">@color/grey</item>
+        <item name="android:layout_marginBottom">@dimen/fab_margin_bottom</item>
+        <item name="android:layout_marginRight">@dimen/fab_margin_right</item>
+        <item name="fabCustomSize">@dimen/fab_circumference_size</item>
+    </style>
+
     <style name="Body">
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/body_text_size</item>

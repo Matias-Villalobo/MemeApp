@@ -4,8 +4,8 @@ package com.example.memeapp.presentation.mvp.presenter
 import com.example.memeapp.domain.entity.MemesEntity
 import com.example.memeapp.presentation.mvp.model.MemeDetailModel
 import com.example.memeapp.presentation.mvp.view.MemeDetailView
-import com.example.memeapp.utils.CharactersConstantsUtils.ID
-import com.example.memeapp.utils.CharactersConstantsUtils.ZERO_VALUE
+import com.example.memeapp.utils.MemesConstantsUtils.ID
+import com.example.memeapp.utils.MemesConstantsUtils.ZERO_VALUE
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever

@@ -6,6 +6,7 @@ import com.example.memeapp.data.local.LocalMemeDataBaseImpl
 import com.example.memeapp.data.service.implementation.MemesServiceImpl
 import com.example.memeapp.databinding.ActivityMainBinding
 import com.example.memeapp.domain.usecase.GetMemesUseCaseImpl
+import com.example.memeapp.domain.usecase.LoadMemesFromDataBaseUseCaseImpl
 import com.example.memeapp.domain.usecase.SaveMemesToDataBaseUseCaseImpl
 import com.example.memeapp.presentation.adapter.ItemClicked
 import com.example.memeapp.presentation.mvp.contract.MemeAppContract
@@ -22,11 +23,13 @@ class MainActivity : AppCompatActivity(), ItemClicked {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        loadMemesFromLocalDB()
         presenter = MemeAppPresenter(
             MemeAppModel
                 (
                 GetMemesUseCaseImpl(MemesServiceImpl()),
-                SaveMemesToDataBaseUseCaseImpl(LocalMemeDataBaseImpl())
+                SaveMemesToDataBaseUseCaseImpl(LocalMemeDataBaseImpl()),
+                LoadMemesFromDataBaseUseCaseImpl(LocalMemeDataBaseImpl())
             ),
             MemeAppView(this, binding)
         )
@@ -35,5 +38,9 @@ class MainActivity : AppCompatActivity(), ItemClicked {
 
     override fun memeCardClicked(memeId: Int) {
         presenter.onMemeClicked(memeId)
+    }
+
+    private fun loadMemesFromLocalDB() {
+        binding.fab.setOnClickListener { presenter.getMemesFromDataBase() }
     }
 }

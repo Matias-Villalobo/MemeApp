@@ -14,5 +14,7 @@
     <dimen name="meme_image_height_size">200dp</dimen>
     <dimen name="meme_image_width_size">0dp</dimen>
     <dimen name="progress_bar_size">70dp</dimen>
-
+    <dimen name="fab_margin_bottom">90dp</dimen>
+    <dimen name="fab_margin_right">30dp</dimen>
+    <dimen name="fab_circumference_size">60dp</dimen>
 </resources>

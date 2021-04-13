@@ -19,6 +19,21 @@ fun MemesEntity.transformEntityToRealm(): MemeRealmEntity =
         this.topText
     )
 
+fun List<MemeRealmEntity>.transformRealmListToEntityList(): List<MemesEntity> =
+    this.map { it.transformRealmToEntity() }
+
+fun MemeRealmEntity.transformRealmToEntity(): MemesEntity =
+    MemesEntity(
+        this.id,
+        this.bottomText,
+        this.image,
+        this.name,
+        this.tag,
+        this.rank,
+        this.topText
+    )
+
+
 fun MemeResponse.transformMemes(): MemesEntity =
     MemesEntity(
         this.id,

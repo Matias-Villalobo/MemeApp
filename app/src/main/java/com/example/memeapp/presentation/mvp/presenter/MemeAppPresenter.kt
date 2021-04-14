@@ -29,4 +29,11 @@ class MemeAppPresenter(
     override fun onMemeClicked(memeId: Int) {
         view.showMemeInfo(memeId)
     }
+
+    override fun getMemesFromDataBase() {
+        view.cleanRecycler()
+        view.showProgressBar(true)
+        view.showData(model.loadMemesFromDataBase())
+        view.showProgressBar(false)
+    }
 }

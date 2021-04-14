@@ -2,8 +2,8 @@ package com.example.memeapp.presentation.mvp.presenter
 
 import com.example.memeapp.domain.entity.MemesEntity
 import com.example.memeapp.presentation.mvp.contract.MemeAppContract
-import com.example.memeapp.utils.CharactersConstantsUtils.ID
-import com.example.memeapp.utils.CharactersConstantsUtils.ZERO_VALUE
+import com.example.memeapp.utils.MemesConstantsUtils.ID
+import com.example.memeapp.utils.MemesConstantsUtils.ZERO_VALUE
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -18,7 +18,6 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
-
 
 class MemeAppPresenterTest {
     private val memeAppModel = mock(MemeAppContract.MemeAppModel::class.java)
@@ -54,6 +53,17 @@ class MemeAppPresenterTest {
     fun `when a meme card is pressed, show details in a fragment`() {
         memeAppPresenter.onMemeClicked(ID)
         verify(view).showMemeInfo(ID)
+    }
+
+    @Test
+    fun `load local database data`() {
+        whenever(memeAppModel.loadMemesFromDataBase()).thenReturn((memes))
+        memeAppPresenter.getMemesFromDataBase()
+        verify(view).cleanRecycler()
+        verify(view).showProgressBar(true)
+        verify(memeAppModel).loadMemesFromDataBase()
+        verify(view).showData(memes)
+        verify(view).showProgressBar(false)
     }
 
     companion object {

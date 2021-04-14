@@ -2,7 +2,7 @@ package com.example.memeapp.domain.usecase
 
 import com.example.memeapp.domain.entity.MemesEntity
 import com.example.memeapp.domain.service.MemesService
-import com.example.memeapp.utils.CharactersConstantsUtils.ID
+import com.example.memeapp.utils.MemesConstantsUtils.ID
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever

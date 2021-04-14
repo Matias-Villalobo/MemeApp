@@ -37,4 +37,8 @@ class MemeAppView(activity: Activity, private val binding: ActivityMainBinding) 
             .show((context as FragmentActivity).supportFragmentManager, TAG)
     }
 
+    override fun cleanRecycler() {
+        binding.recyclerView.removeAllViewsInLayout()
+    }
+
 }

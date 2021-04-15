@@ -2,12 +2,12 @@ package com.example.memeapp.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.memeapp.data.local.LocalMemeDataBaseImpl
+import com.example.memeapp.data.local.LocalMemeDatabaseImpl
 import com.example.memeapp.data.service.implementation.MemesServiceImpl
 import com.example.memeapp.databinding.ActivityMainBinding
 import com.example.memeapp.domain.usecase.GetMemesUseCaseImpl
-import com.example.memeapp.domain.usecase.LoadMemesFromDataBaseUseCaseImpl
-import com.example.memeapp.domain.usecase.SaveMemesToDataBaseUseCaseImpl
+import com.example.memeapp.domain.usecase.LoadMemesFromDatabaseUseCaseImpl
+import com.example.memeapp.domain.usecase.SaveMemesToDatabaseUseCaseImpl
 import com.example.memeapp.presentation.adapter.ItemClicked
 import com.example.memeapp.presentation.mvp.contract.MemeAppContract
 import com.example.memeapp.presentation.mvp.model.MemeAppModel
@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity(), ItemClicked {
             MemeAppModel
                 (
                 GetMemesUseCaseImpl(MemesServiceImpl()),
-                SaveMemesToDataBaseUseCaseImpl(LocalMemeDataBaseImpl()),
-                LoadMemesFromDataBaseUseCaseImpl(LocalMemeDataBaseImpl())
+                SaveMemesToDatabaseUseCaseImpl(LocalMemeDatabaseImpl()),
+                LoadMemesFromDatabaseUseCaseImpl(LocalMemeDatabaseImpl())
             ),
             MemeAppView(this, binding)
         )
@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity(), ItemClicked {
     }
 
     private fun setListeners() {
-        binding.fab.setOnClickListener { presenter.getMemesFromDataBase() }
+        binding.fab.setOnClickListener { presenter.getMemesFromDatabase() }
     }
 }

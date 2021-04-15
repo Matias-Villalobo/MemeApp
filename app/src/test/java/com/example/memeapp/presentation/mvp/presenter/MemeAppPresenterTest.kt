@@ -57,11 +57,11 @@ class MemeAppPresenterTest {
 
     @Test
     fun `load local database data`() {
-        whenever(memeAppModel.loadMemesFromDataBase()).thenReturn((memes))
-        memeAppPresenter.getMemesFromDataBase()
+        whenever(memeAppModel.loadMemesFromDatabase()).thenReturn((memes))
+        memeAppPresenter.getMemesFromDatabase()
         verify(view).cleanRecycler()
         verify(view).showProgressBar(true)
-        verify(memeAppModel).loadMemesFromDataBase()
+        verify(memeAppModel).loadMemesFromDatabase()
         verify(view).showData(memes)
         verify(view).showProgressBar(false)
     }

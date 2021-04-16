@@ -31,7 +31,7 @@ class MemeAppPresenterTest {
     }
 
     @Test
-    fun `connection unsuccessful test`() {
+    fun `connection failed test`() {
         whenever(memeAppModel.getMemesData()).thenReturn(Observable.error(Throwable()))
         memeAppPresenter.fetchMemes()
         verify(view).showProgressBar(true)
@@ -53,17 +53,6 @@ class MemeAppPresenterTest {
     fun `when a meme card is pressed, show details in a fragment`() {
         memeAppPresenter.onMemeClicked(ID)
         verify(view).showMemeInfo(ID)
-    }
-
-    @Test
-    fun `load local database data`() {
-        whenever(memeAppModel.loadMemesFromDataBase()).thenReturn((memes))
-        memeAppPresenter.getMemesFromDataBase()
-        verify(view).cleanRecycler()
-        verify(view).showProgressBar(true)
-        verify(memeAppModel).loadMemesFromDataBase()
-        verify(view).showData(memes)
-        verify(view).showProgressBar(false)
     }
 
     companion object {

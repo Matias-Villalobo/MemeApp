@@ -16,24 +16,24 @@ class MemeAppPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { data ->
-                    model.addMemesListToDataBase(data)
+                    model.addMemesListToDatabase(data)
                     view.showData(data)
                     view.showProgressBar(false)
                 },
                 {
-                    view.showError()
+                    val memesInfo = model.loadMemesFromDatabase()
+                    if (memesInfo.isEmpty()) {
+                        view.showError()
+                    } else {
+                        view.showData(memesInfo)
+                    }
                     view.showProgressBar(false)
                 })
+
     }
 
     override fun onMemeClicked(memeId: Int) {
         view.showMemeInfo(memeId)
     }
 
-    override fun getMemesFromDataBase() {
-        view.cleanRecycler()
-        view.showProgressBar(true)
-        view.showData(model.loadMemesFromDataBase())
-        view.showProgressBar(false)
-    }
 }

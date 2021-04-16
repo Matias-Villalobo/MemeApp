@@ -7,19 +7,20 @@ interface MemeAppContract {
 
     interface MemeAppModel {
         fun getMemesData(): Observable<List<MemesEntity>>
-        fun addMemesListToDataBase(memes: List<MemesEntity>)
-        fun loadMemesFromDataBase():List<MemesEntity>
+        fun addMemesListToDatabase(memes: List<MemesEntity>)
+        fun loadMemesFromDatabase():List<MemesEntity>
     }
 
     interface MemeAppPresenter {
         fun fetchMemes()
         fun onMemeClicked(memeId: Int)
-        fun getMemesFromDataBase()
     }
 
     interface MemeAppView {
         fun showData(data: List<MemesEntity>)
         fun showError()
+        fun showDatabaseError()
+        fun showMemeDescriptionError()
         fun showProgressBar(show: Boolean)
         fun showMemeInfo(memeId: Int)
         fun cleanRecycler()

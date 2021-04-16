@@ -28,6 +28,14 @@ class MemeAppView(activity: Activity, private val binding: ActivityMainBinding) 
         Toast.makeText(context, R.string.connection_not_established, Toast.LENGTH_SHORT).show()
     }
 
+    override fun showDatabaseError() {
+        Toast.makeText(context, R.string.no_data, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showMemeDescriptionError() {
+        Toast.makeText(context, R.string.no_meme_description, Toast.LENGTH_SHORT).show()
+    }
+
     override fun showProgressBar(show: Boolean) {
         binding.progressBar.isVisible = show
     }

@@ -30,7 +30,7 @@ class MemeDetailView(
     }
 
     override fun showFragmentError() {
-        Toast.makeText(context, R.string.connection_not_established, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.no_meme_description, Toast.LENGTH_SHORT).show()
     }
 
     override fun showProgressBar(show: Boolean) {

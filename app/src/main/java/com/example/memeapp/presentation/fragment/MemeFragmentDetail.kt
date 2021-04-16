@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.memeapp.data.local.LocalMemeDatabaseImpl
 import com.example.memeapp.data.service.implementation.MemesServiceImpl
 import com.example.memeapp.databinding.MemeCardDetailLayoutBinding
 import com.example.memeapp.domain.usecase.GetSingleMemeUseCaseImpl
@@ -30,7 +31,7 @@ class MemeFragmentDetail : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = MemeDetailPresenter(
-                    MemeDetailModel(GetSingleMemeUseCaseImpl(MemesServiceImpl())),
+                    MemeDetailModel(GetSingleMemeUseCaseImpl(MemesServiceImpl(),LocalMemeDatabaseImpl())),
                     MemeDetailView(this, binding)
         )
         presenter.retrieveSingleMemeInfo(

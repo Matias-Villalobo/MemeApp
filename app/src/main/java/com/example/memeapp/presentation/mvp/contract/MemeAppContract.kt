@@ -14,7 +14,6 @@ interface MemeAppContract {
     interface MemeAppPresenter {
         fun fetchMemes()
         fun onMemeClicked(memeId: Int)
-        fun getMemesFromDatabase()
     }
 
     interface MemeAppView {

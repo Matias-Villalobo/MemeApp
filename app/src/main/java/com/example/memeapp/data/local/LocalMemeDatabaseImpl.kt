@@ -26,17 +26,9 @@ class LocalMemeDatabaseImpl() : LocalMemeDatabase {
         return memesRealm.transformRealmListToEntityList()
     }
 
-    override fun getSingleMeme(id: Int): MemesEntity {
+    override fun getSingleMeme(id: Int): MemesEntity? {
         val realm = Realm.getDefaultInstance()
         val memesRealm = realm.where(MemeRealmEntity::class.java).findAll()
-        return (memesRealm.find { it.id == id })?.transformRealmToEntity() ?: MemesEntity(
-            ZERO_VALUE,
-            EMPTY_STRING,
-            EMPTY_STRING,
-            EMPTY_STRING,
-            EMPTY_STRING,
-            ZERO_VALUE,
-            EMPTY_STRING
-        )
+        return (memesRealm.find { it.id == id })?.transformRealmToEntity()
     }
 }

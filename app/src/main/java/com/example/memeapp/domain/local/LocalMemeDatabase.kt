@@ -4,6 +4,6 @@ import com.example.memeapp.domain.entity.MemesEntity
 
 interface LocalMemeDatabase {
     fun saveMemes(memes: List<MemesEntity>)
-    fun loadMemes():List<MemesEntity>
-    fun getSingleMeme(id: Int):MemesEntity
+    fun loadMemes(): List<MemesEntity>
+    fun getSingleMeme(id: Int): MemesEntity?
 }

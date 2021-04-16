@@ -53,7 +53,7 @@ class MemeMapperTest {
     @Test
     fun `transform memes realm to entity Test`() {
         val meme = MEMES_REALM_ENTITY.transformRealmToEntity()
-        `assert properties of Memes Realm`(meme)
+        assertEquals(MEMES_ENTITY, meme)
     }
 
     @Test
@@ -67,16 +67,8 @@ class MemeMapperTest {
             assertEquals(character, MEMES_ENTITY)
         }
     }
+
     private fun `assert properties of Memes`(meme: MemeRealmEntity) {
-        assertEquals(MemesConstantsUtils.ID, meme.id)
-        assertEquals(MemesConstantsUtils.NAME, meme.name)
-        assertEquals(MemesConstantsUtils.BOTTOM_TEXT, meme.bottomText)
-        assertEquals(MemesConstantsUtils.IMAGE, meme.image)
-        assertEquals(MemesConstantsUtils.TAG, meme.tag)
-        assertEquals(MemesConstantsUtils.RANK, meme.rank)
-        assertEquals(MemesConstantsUtils.TOP_TEXT, meme.topText)
-    }
-    private fun `assert properties of Memes Realm`(meme: MemesEntity) {
         assertEquals(MemesConstantsUtils.ID, meme.id)
         assertEquals(MemesConstantsUtils.NAME, meme.name)
         assertEquals(MemesConstantsUtils.BOTTOM_TEXT, meme.bottomText)

@@ -16,7 +16,7 @@ class GetSingleMemeUseCaseImpl constructor(
 ) : GetSingleMemeUseCase {
     override fun call(id: Int): Observable<MemesEntity> {
         val localMeme = localDatabase.getSingleMeme(id)
-        return if (localMeme.id == ZERO_VALUE) {
+        return if (localMeme == null) {
             memesService.getSingleMeme(id)
         } else {
             Observable.just(localMeme)

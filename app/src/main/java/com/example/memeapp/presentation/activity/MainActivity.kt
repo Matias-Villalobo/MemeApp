@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity(), ItemClicked {
     }
 
     private fun setListeners() {
-        binding.fab.setOnClickListener { presenter.getMemesFromDatabase() }
+        binding.fab.setOnClickListener { presenter.fetchMemes()}
     }
 }
